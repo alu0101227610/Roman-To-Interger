@@ -1,34 +1,33 @@
 #include "romans.h"
 
 char *int_to_roman(int val) {
-/* C function implementation here */
-
     /*
-    First it'll be a good practice to check if the number
-    given can be represented on roman numerals, but since
-    it's guarantied that the number is between 1 and 3999, 
-    there shouldn't be problem so I'll skip the check.
+    First it's good practice to check if the number
+    given can be represented in roman numerals, but since
+    it's guarantied that the number will be between 1 and 3999, 
+    this step is not necessary now.
     */
 
     char *result = "";
 
     /*
-    An easy way to "build" our roman numeral is to write
-    the necesary numbers as we need them since the roman 
-    numbers are a limited set.
+    To create a our first function, we need the roman numeral data.
+    As we know, the roman numerals are known and they have a limited
+    value list. So I can easily create Strings with the numerals.
     */
 
-    char thousands[4][3] = { "", "M", "MM", "MMM",};
-    char hundreds[10][4] = { "",  "C",  "CC",  "CCC",  "CD", "D", "DC", "DCC", "DCCC", "CM",};
-    char tens[10][4] = { "",  "X",  "XX",  "XXX",  "XL", "L", "LX", "LXX", "LXXX", "XC",};
-    char ones[10][4] = { "",  "I",  "II",  "III",  "IV", "V", "VI", "VII", "VIII", "IX",};
+    char thousands[4][4] = { "", "M", "MM", "MMM"};
+    char hundreds[10][5] = { "",  "C",  "CC",  "CCC",  "CD", "D", "DC", "DCC", "DCCC", "CM"};
+    char tens[10][5] = { "",  "X",  "XX",  "XXX",  "XL", "L", "LX", "LXX", "LXXX", "XC"};
+    char ones[10][5] = { "",  "I",  "II",  "III",  "IV", "V", "VI", "VII", "VIII", "IX"};
 
     /*
-    Now to get the desired numeral we divide the given number 
-    and append the corresponding number on the respective magnitudes.
+    To translate to the desired numeral, we divide the given number
+    and append that value to the respective "magnitude" with strcat; 
+    which is a library that allow us to append two blocks of memory
     */
 
-    result = (char *) malloc(15); //We reserve size up to a numeral with 15 digits, the longest it could be.
+    result = (char *) malloc(15); //We reserve the length up to a numeral with 15 digits, the longest it can be.
 
     strcat(result, thousands[val / 1000]);
     strcat(result, hundreds[(val % 1000) / 100]);

@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 //Header file of the converting functions between integers and roman numerals
 // Author:
